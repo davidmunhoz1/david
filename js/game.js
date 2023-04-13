@@ -46,12 +46,10 @@ function create() {
  * Updates each game object of the scene.
  */
 function update() {
-  if (cursors.left.isDown) {
- console.log('left');
-  }
 
-  background2.setY(background2.y +5);
-  background.setY(background.y +5);
+
+  background2.setY(background2.y +3);
+  background.setY(background.y +3);
 
   if(background.y >= SCREEN_HEIGHT/2 + background.height){
     background.setY(background2.y - background.height)
@@ -60,6 +58,27 @@ function update() {
     background2 = aux;
   }
  
+  function playerMove(){
+  if (cursors.left.isDown && player.width !== 0){
+    player.setX(player.x - 2);
+     }
+   
+     if (cursors.right.isDown){
+       player.setX(player.x +2);
+     }
+
+     if(cursors.up.isDown){
+      player.setY(player.y -2)
+     }
+
+     if(cursors.down.isDown){
+      player.setY(player.y +2)
+     }
+    }
+
+    function borderCollision(){
+      
+    }
  
  
 }
