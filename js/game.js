@@ -46,40 +46,28 @@ function create() {
  * Updates each game object of the scene.
  */
 function update() {
-
-
   background2.setY(background2.y +3);
   background.setY(background.y +3);
 
-  if(background.y >= SCREEN_HEIGHT/2 + background.height){
+  if(background.y >= SCREEN_HEIGHT / 2 + background.height){
     background.setY(background2.y - background.height)
     let aux = background
     background = background2;
     background2 = aux;
   }
  
-  function playerMove(){
-  if (cursors.left.isDown && player.width !== 0){
-    player.setX(player.x - 2);
+  if (cursors.left.isDown && player.x > player.width / 2 * PLAYER_SCALE ){
+    player.setX(player.x - PLAYER_VELOCITY);
      }
    
-     if (cursors.right.isDown){
-       player.setX(player.x +2);
+     if (cursors.right.isDown && player.x < SCREEN_WIDTH - player.width /2 * PLAYER_SCALE ){
+       player.setX(player.x + PLAYER_VELOCITY);
      }
-
-     if(cursors.up.isDown){
-      player.setY(player.y -2)
-     }
-
-     if(cursors.down.isDown){
-      player.setY(player.y +2)
-     }
+     if (cursors.up.isDown && player.y > player.height / 2 * PLAYER_SCALE) {
+      player.setY(player.y - PLAYER_VELOCITY);
+    }if (cursors.down.isDown && player.y < SCREEN_HEIGHT - player.height / 2 * PLAYER_SCALE){
+      player.setY(player.y + PLAYER_VELOCITY);
     }
-
-    function borderCollision(){
-      
-    }
- 
  
 }
 
